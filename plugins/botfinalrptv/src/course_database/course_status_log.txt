@@ -1,0 +1,270 @@
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: started
+Error insertando el estado del curso para el número: whatsapp:+584143385226 - Error: Error en la base de datos de WordPress: Ha fallado el procesamiento del valor del siguiente campo: phone_number. El valor facilitado puede ser demasiado largo o contener datos no válidos.
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: started
+Estado del curso insertado para el número: whatsapp:+584143385226 con estado: started
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: not_started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: not_started
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: started
+Estado de test1 para el número: whatsapp:+584143385226 es: 0
+Estado de test1 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: not_started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: not_started
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: started
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 0
+Estado de test2 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 1
+Estado de test3 para el número: whatsapp:+584143385226 es: 0
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: not_started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: not_started
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: started
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 1
+Estado de test3 para el número: whatsapp:+584143385226 es: 0
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: not_started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: not_started
+Estado de test1 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test2 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test3 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test4 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test5 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test6 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test7 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: started
+Estado de test1 para el número: whatsapp:+584143385226 es: 0
+Estado de test1 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 0
+Estado de test2 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 1
+Estado de test3 para el número: whatsapp:+584143385226 es: 0
+Estado de test3 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: not_started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: not_started
+Estado de test1 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test2 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test3 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test4 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test5 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test6 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test7 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: started
+Estado de test1 para el número: whatsapp:+584143385226 es: 0
+Estado de test1 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 0
+Estado de test2 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 1
+Estado de test3 para el número: whatsapp:+584143385226 es: 0
+Estado de test3 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 1
+Estado de test3 para el número: whatsapp:+584143385226 es: 1
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: not_started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: not_started
+Estado de test1 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test2 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test3 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test4 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test5 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test6 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test7 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: started
+Estado de test1 para el número: whatsapp:+584143385226 es: 0
+Estado de test1 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 0
+Estado de test2 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 1
+Estado de test3 para el número: whatsapp:+584143385226 es: 0
+Estado de test3 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 1
+Estado de test3 para el número: whatsapp:+584143385226 es: 1
+Estado de test4 para el número: whatsapp:+584143385226 es: 0
+Estado de test4 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 1
+Estado de test3 para el número: whatsapp:+584143385226 es: 1
+Estado de test4 para el número: whatsapp:+584143385226 es: 1
+Estado de test5 para el número: whatsapp:+584143385226 es: 0
+Estado de test5 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 1
+Estado de test3 para el número: whatsapp:+584143385226 es: 1
+Estado de test4 para el número: whatsapp:+584143385226 es: 1
+Estado de test5 para el número: whatsapp:+584143385226 es: 1
+Estado de test6 para el número: whatsapp:+584143385226 es: 0
+Estado de test6 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 1
+Estado de test3 para el número: whatsapp:+584143385226 es: 1
+Estado de test4 para el número: whatsapp:+584143385226 es: 1
+Estado de test5 para el número: whatsapp:+584143385226 es: 1
+Estado de test6 para el número: whatsapp:+584143385226 es: 1
+Estado de test7 para el número: whatsapp:+584143385226 es: 0
+Estado de test7 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: not_started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: not_started
+Estado de test1 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test2 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test3 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test4 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test5 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test6 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test7 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Intentando actualizar/iniciar el curso para el número: +584143385226 con estado: started
+Estado del curso insertado para el número: +584143385226 con estado: started
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: started
+Estado del curso insertado para el número: whatsapp:+584143385226 con estado: started
+Estado de test1 para el número: whatsapp:+584143385226 es: 0
+Estado de test2 para el número: whatsapp:+584143385226 es: 0
+Estado de test3 para el número: whatsapp:+584143385226 es: 0
+Estado de test4 para el número: whatsapp:+584143385226 es: 0
+Estado de test5 para el número: whatsapp:+584143385226 es: 0
+Estado de test6 para el número: whatsapp:+584143385226 es: 0
+Estado de test7 para el número: whatsapp:+584143385226 es: 0
+Estado de test1 para el número: whatsapp:+584143385226 es: 0
+Estado de test2 para el número: whatsapp:+584143385226 es: 0
+Estado de test3 para el número: whatsapp:+584143385226 es: 0
+Estado de test4 para el número: whatsapp:+584143385226 es: 0
+Estado de test5 para el número: whatsapp:+584143385226 es: 0
+Estado de test6 para el número: whatsapp:+584143385226 es: 0
+Estado de test7 para el número: whatsapp:+584143385226 es: 0
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: not_started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: not_started
+Estado de test1 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test2 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test3 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test4 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test5 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test6 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test7 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: started
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: not_started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: not_started
+Estado de test1 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test2 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test3 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test4 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test5 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test6 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test7 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: started
+Estado de test1 para el número: whatsapp:+584143385226 es: 0
+Estado de test1 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 0
+Estado de test2 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 1
+Estado de test3 para el número: whatsapp:+584143385226 es: 0
+Estado de test4 para el número: whatsapp:+584143385226 es: 0
+Estado de test5 para el número: whatsapp:+584143385226 es: 0
+Estado de test6 para el número: whatsapp:+584143385226 es: 0
+Estado de test7 para el número: whatsapp:+584143385226 es: 0
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 1
+Estado de test3 para el número: whatsapp:+584143385226 es: 0
+Estado de test3 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 1
+Estado de test3 para el número: whatsapp:+584143385226 es: 1
+Estado de test4 para el número: whatsapp:+584143385226 es: 0
+Estado de test5 para el número: whatsapp:+584143385226 es: 0
+Estado de test6 para el número: whatsapp:+584143385226 es: 0
+Estado de test7 para el número: whatsapp:+584143385226 es: 0
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 1
+Estado de test3 para el número: whatsapp:+584143385226 es: 1
+Estado de test4 para el número: whatsapp:+584143385226 es: 0
+Estado de test4 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 1
+Estado de test3 para el número: whatsapp:+584143385226 es: 1
+Estado de test4 para el número: whatsapp:+584143385226 es: 1
+Estado de test5 para el número: whatsapp:+584143385226 es: 0
+Estado de test5 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 1
+Estado de test3 para el número: whatsapp:+584143385226 es: 1
+Estado de test4 para el número: whatsapp:+584143385226 es: 1
+Estado de test5 para el número: whatsapp:+584143385226 es: 1
+Estado de test6 para el número: whatsapp:+584143385226 es: 0
+Estado de test6 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 1
+Estado de test3 para el número: whatsapp:+584143385226 es: 1
+Estado de test4 para el número: whatsapp:+584143385226 es: 1
+Estado de test5 para el número: whatsapp:+584143385226 es: 1
+Estado de test6 para el número: whatsapp:+584143385226 es: 1
+Estado de test7 para el número: whatsapp:+584143385226 es: 0
+Estado de test7 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: not_started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: not_started
+Estado de test1 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test2 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test3 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test4 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test5 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test6 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test7 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: started
+Estado de test1 para el número: whatsapp:+584143385226 es: 0
+Estado de test1 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 0
+Estado de test2 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Estado de test1 para el número: whatsapp:+584143385226 es: 1
+Estado de test2 para el número: whatsapp:+584143385226 es: 1
+Estado de test3 para el número: whatsapp:+584143385226 es: 0
+Estado de test4 para el número: whatsapp:+584143385226 es: 0
+Estado de test5 para el número: whatsapp:+584143385226 es: 0
+Estado de test6 para el número: whatsapp:+584143385226 es: 0
+Estado de test7 para el número: whatsapp:+584143385226 es: 0
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: not_started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: not_started
+Estado de test1 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test2 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test3 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test4 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test5 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test6 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test7 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: started
+Estado de test1 para el número: whatsapp:+584143385226 es: 0
+Estado de test1 actualizado para el número: whatsapp:+584143385226 a estado: 1
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: not_started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: not_started
+Estado de test1 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test2 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test3 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test4 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test5 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test6 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test7 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: started
+Intentando actualizar/iniciar el curso para el número: whatsapp:+584143385226 con estado: not_started
+Estado del curso actualizado para el número: whatsapp:+584143385226 a estado: not_started
+Estado de test1 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test2 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test3 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test4 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test5 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test6 actualizado para el número: whatsapp:+584143385226 a estado: 0
+Estado de test7 actualizado para el número: whatsapp:+584143385226 a estado: 0

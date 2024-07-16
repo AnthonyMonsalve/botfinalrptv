@@ -1,0 +1,12 @@
+{
+    "name": "twilio/plugin",
+    "description": "bot de rptv",
+    "autoload": {
+        "psr-4": {
+            "Twilio\\Plugin\\": "src/"
+        }
+    },
+    "require": {
+        "twilio/sdk": "^8.2"
+    }
+}
