@@ -1,0 +1,7 @@
+# Ignore PHP vendor directory
+/vendor/
+
+# Ignore Composer generated files
+/composer.phar
+/composer.lock
+/vendor/
