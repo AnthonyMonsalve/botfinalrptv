@@ -1,0 +1,7 @@
+Body: ATENCION ATENCION *LIX NO SE BAÑA Y LE HUELEN LOS PIES EN EL TORREON*
+From: whatsapp:+584143385226
+To: whatsapp:+19152094653
+MediaUrl0: https://api.twilio.com/2010-04-01/Accounts/ACa7bed47ec54f13a3325b2088b4c00f47/Messages/MM789b2950e87d7b0ce13fc0709ecb5a27/Media/ME5385c00b527f299670355ad8f3239057
+NumMedia: 1
+ProfileName: Anthony
+MessageType: image

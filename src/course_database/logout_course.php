@@ -1,7 +1,7 @@
 <?php
 
-require_once plugin_dir_path(__FILE__) . 'updateStatusCourse.php';
-require_once plugin_dir_path(__FILE__) . 'updateTestStatus.php';
+require_once plugin_dir_path(__FILE__) . 'update_status_course.php';
+require_once plugin_dir_path(__FILE__) . 'update_test_status.php';
 
 
 function logout_course($from)
