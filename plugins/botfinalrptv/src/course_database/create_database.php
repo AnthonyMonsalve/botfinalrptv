@@ -10,6 +10,7 @@ function create_course_table()
     $sql = "CREATE TABLE $table_name (
         id mediumint(9) NOT NULL AUTO_INCREMENT,
         phone_number varchar(50) NOT NULL,
+        validate_info varchar(60) DEFAULT 'not_started' NOT NULL,
         course_status varchar(60) DEFAULT 'not_started' NOT NULL,
         test1 int(1) DEFAULT 0 NOT NULL,
         test2 int(1) DEFAULT 0 NOT NULL,
