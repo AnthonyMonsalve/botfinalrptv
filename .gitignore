@@ -8,3 +8,6 @@
 
 # Ignore all .txt files
 *.txt
+
+# But do not ignore .txt files in the messages directory
+!src/messages/*.txt
