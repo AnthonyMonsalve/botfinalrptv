@@ -5,7 +5,7 @@ function isInteractiveCourseInstruction($instruction)
   $instruction = strtolower($instruction);
 
   $interactiveCourseInstructions = [
-    '1',
+    '2',
     'empezar curso interactivo',
     'quiero empezar el curso interactivo',
     'iniciar curso interactivo',

@@ -3,7 +3,7 @@
 function create_course_table()
 {
     global $wpdb;
-    $table_name = $wpdb->prefix . 'twilio_courses';
+    $table_name = $wpdb->prefix . 'twilio';
 
     $charset_collate = $wpdb->get_charset_collate();
 

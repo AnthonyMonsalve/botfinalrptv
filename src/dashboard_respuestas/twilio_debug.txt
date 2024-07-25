@@ -1,0 +1,35 @@
+Solicitud POST recibida.
+SID de Twilio: ACa7bed47ec54f13a3325b2088b4c00f47
+Token de Twilio: c3d1aa401562f7cce223bf061ac244ca
+Solicitud POST recibida.
+SID de Twilio: ACa7bed47ec54f13a3325b2088b4c00f47
+Token de Twilio: c3d1aa401562f7cce223bf061ac244ca
+Solicitud POST recibida.
+Número de WhatsApp de destino: whatsapp:+584143385226
+Mensaje: waaa
+Mensaje enviado con éxito.
+Solicitud POST recibida.
+Número de WhatsApp de destino: whatsapp:+584143385226
+Mensaje: TEST de envio
+Mensaje enviado con éxito.
+Solicitud POST recibida.
+SID de Twilio: ACa7bed47ec54f13a3325b2088b4c00f47
+Token de Twilio: c3d1aa401562f7cce223bf061ac244ca
+Cliente de Twilio creado exitosamente.
+Número de WhatsApp de destino: whatsapp:+584143385226
+Mensaje: testito
+Mensaje enviado con éxito.
+Solicitud POST recibida.
+SID de Twilio: ACa7bed47ec54f13a3325b2088b4c00f47
+Token de Twilio: c3d1aa401562f7cce223bf061ac244ca
+Cliente de Twilio creado exitosamente.
+Número de WhatsApp de destino: whatsapp:+584143385226
+Mensaje: Mensaje
+Mensaje enviado con éxito.
+Solicitud POST recibida.
+SID de Twilio: ACa7bed47ec54f13a3325b2088b4c00f47
+Token de Twilio: c3d1aa401562f7cce223bf061ac244ca
+Cliente de Twilio creado exitosamente.
+Número de WhatsApp de destino: whatsapp:+584143385226
+Mensaje: hola
+Mensaje enviado con éxito.

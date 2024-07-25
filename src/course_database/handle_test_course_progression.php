@@ -30,13 +30,15 @@ function handle_test_course_progression($messageReceived, $from, $to, $client)
             'correct_option' => 'a'
         ],
         'test7' => [
-            'response' => 'certificado.txt',
+            'response' => 'testFinal.txt',
             'correct' => '✅ *¡Correcto!* Puedes verificar la autenticidad de una imagen o video en Google Imágenes y TinEye *(al final te compartiremos el link)*',
             'incorrect' => '❌ *Incorrecto.* Te recomendamos usar Google Imágenes y TinyEye para verificar imágenes y videos.',
             'correct_option' => 'b',
-            'final_message' => 'testFinal.txt'
+            'final_message' => 'certificado.txt'
         ]
     ];
+
+    $certificado = 'https://latvcalle.com/wp-content/uploads/2024/07/Certificado_Heroe1.png';
 
     foreach ($tests as $test => $data) {
         if (!get_test_status($from, $test)) {
@@ -49,18 +51,19 @@ function handle_test_course_progression($messageReceived, $from, $to, $client)
                     $dontHaveError = send_twilio_message($to, $from, $data['incorrect'], $client);
                 }
 
-                $dontHaveError = send_twilio_message($to, $from, get_message($data['response']), $client);
-
                 if (isset($data['final_message'])) {
-                    $dontHaveError = send_twilio_message($to, $from, get_message($data['final_message']), $client);
+                    $dontHaveError = send_twilio_message($to, $from, get_message($data['final_message']), $client, $certificado);
                     logout_course($from);
                 }
+
+                $dontHaveError = send_twilio_message($to, $from, get_message($data['response']), $client);
+
                 return;
             }
         }
     }
 
-    $dontHaveError = send_twilio_message($to, $from, 'Selecciona una opción válida. Si deseas salir del curso, escribe *"Salir"*.', $client);
+    $dontHaveError = send_twilio_message($to, $from, get_message('respuesta_incorrecta_curso.txt'), $client);
 
     return $dontHaveError;
 }

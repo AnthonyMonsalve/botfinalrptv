@@ -3,7 +3,7 @@
 function get_validate_info_status($phone_number)
 {
   global $wpdb;
-  $table_name = $wpdb->prefix . 'twilio_courses';
+  $table_name = $wpdb->prefix . 'twilio';
   $log_file = plugin_dir_path(__FILE__) . 'course_status_log.txt';
 
   // Obtener el estado actual del test

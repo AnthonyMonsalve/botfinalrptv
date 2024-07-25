@@ -5,7 +5,7 @@ function isValidateInformationInstruction($instruction)
     $instruction = strtolower($instruction);
 
     $interactiveCourseInstructions = [
-        '2',
+        '3',
         'validar informacion',
         'validar información',
         'validar information',

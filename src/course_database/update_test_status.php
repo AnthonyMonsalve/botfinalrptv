@@ -3,7 +3,7 @@
 function update_test_status($phone_number, $test_name, $new_status)
 {
   global $wpdb;
-  $table_name = $wpdb->prefix . 'twilio_courses';
+  $table_name = $wpdb->prefix . 'twilio';
   $log_file = plugin_dir_path(__FILE__) . 'course_status_log.txt';
 
   // Verificar si el test_name es válido
