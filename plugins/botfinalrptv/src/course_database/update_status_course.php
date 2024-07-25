@@ -4,7 +4,7 @@
 function update_course_status($phone_number, $status)
 {
   global $wpdb;
-  $table_name = $wpdb->prefix . 'twilio_courses';
+  $table_name = $wpdb->prefix . 'twilio';
   $log_file = plugin_dir_path(__FILE__) . 'course_status_log.txt';
 
   // Registrar el intento de actualizar/iniciar el curso

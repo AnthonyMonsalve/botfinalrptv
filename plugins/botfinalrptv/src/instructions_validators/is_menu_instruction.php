@@ -13,6 +13,7 @@ function isMenuInstruction($instruction)
     'rEPÚBLICA',
     'rEPUBLICA',
     'REPUBLICA',
+    'menú',
     'menu',
     'menu principal',
     'ver menú principal',

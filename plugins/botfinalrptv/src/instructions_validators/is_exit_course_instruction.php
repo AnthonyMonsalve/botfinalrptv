@@ -5,7 +5,7 @@ function isExitCourseInstruction($instruction)
   $instruction = strtolower($instruction);
 
   $ExitCourseInstruction = [
-    'salir', 'terminar curso', 'fin', '0', 'salir del curso', '2', 'no', 'terminar', 'terminar validacion'
+    'salir', 'terminar curso', 'fin', '0', 'salir del curso', '2', 'no', 'terminar', 'terminar validacion', 'república', 'republica', 
   ];
 
   if (in_array($instruction, $ExitCourseInstruction)) {

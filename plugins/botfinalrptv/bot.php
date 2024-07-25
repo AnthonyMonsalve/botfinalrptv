@@ -20,10 +20,12 @@ require_once __DIR__ . '/src/instructions_validators/is_exit_course_instruction.
 require_once __DIR__ . '/src/instructions_validators/is_yes_instruction.php';
 require_once __DIR__ . '/src/instructions_validators/is_valid_option_test.php';
 require_once __DIR__ . '/src/instructions_validators/is_validate_information_instruction.php';
+require_once __DIR__ . '/src/instructions_validators/is_elecciones_instruction.php';
 
 require_once __DIR__ . '/src/get_messages/get_message.php';
 
 require_once __DIR__ . '/src/twilio-utils/send_twilio_message.php';
+require_once __DIR__ . '/src/get_noticias/get_presidenciales.php';
 
 require_once __DIR__ . '/src/course_database/started_course.php';
 require_once __DIR__ . '/src/course_database/get_test_status.php';
@@ -31,10 +33,13 @@ require_once __DIR__ . '/src/course_database/logout_course.php';
 require_once __DIR__ . '/src/course_database/create_database.php';
 require_once __DIR__ . '/src/course_database/handle_test_course_progression.php';
 
-require_once __DIR__ . '/src/validate_database/update_validate_information_status.php';
 require_once __DIR__ . '/src/validate_database/get_validate_status.php';
 require_once __DIR__ . '/src/validate_database/started_validation.php';
 require_once __DIR__ . '/src/validate_database/update_status_validation.php';
+
+require_once __DIR__ . '/src/dashboard_respuestas/dashboard_respuestas.php';
+
+require_once __DIR__ . '/src/dashboard_config/dashboard_config.php';
 
 function register_twilio_responder_route()
 {
@@ -59,7 +64,9 @@ function handle_twilio_message($request)
   $from = isset($params['From']) ? $params['From'] : '';
   $to = isset($params['To']) ? $params['To'] : '';
   $ProfileName = isset($params['ProfileName']) ? $params['ProfileName'] : '';
-  $from_admin = ['whatsapp:+584143385226', 'whatsapp:+12177233966'];
+  $string = get_option('datAv_twilio_admins', '');
+  // Convertir el string en un array
+  $from_admin = explode(';', $string);
   $messageReceived = $body;
 
   $log_file = plugin_dir_path(__FILE__) . 'twilio.txt';
@@ -72,8 +79,9 @@ function handle_twilio_message($request)
 
   $MediaUrl = isset($params['MediaUrl0']) ? $params['MediaUrl0'] : null;
 
-  $sid = 'ACa7bed47ec54f13a3325b2088b4c00f47';
-  $token = 'abb1f0fd49af3bffd6dc4d7951c98ddd';
+  $sid = get_option('datAv_twilio_sid', '');
+  $token = get_option('datAv_twilio_token', '');
+
   $client = new Client($sid, $token);
 
   $dontHaveError = true;
@@ -83,6 +91,8 @@ function handle_twilio_message($request)
       $messageReceived = get_message('menu.txt');
     } else if (isHelloInstruction($messageReceived)) {
       $messageReceived = get_message('hello.txt');
+    } else if (isEleccionesInstruction($messageReceived)) {
+      $messageReceived = obtener_notas_presidenciales();
     } else if (isBulletinInstruction($messageReceived)) {
       $messageReceived = get_message('bulletin.txt');
     } else if (isSocialMediaInstruction($messageReceived)) {
@@ -91,7 +101,7 @@ function handle_twilio_message($request)
       update_course_status($from, 'started');
       $messageReceived = get_message('start_course.txt');
     } else if (isValidateInformationInstruction($messageReceived)) {
-      update_validate_information_status($from, 'started');
+      update_validation_status($from, 'started');
       $messageReceived = 'Puedes enviarme texto, imágenes, videos, documentos o notas de voz y lo guardaré en la base de datos para que nuestro equipo revise esa informacion y te contacte con la respuesta 👨🏻‍💻🔎👩🏽‍💻';
     } else {
       $messageReceived = 'Hola, ' . $ProfileName . '. ¿En qué puedo ayudarte? Envia *"Republica"* para ver el menú principal.';
@@ -100,19 +110,21 @@ function handle_twilio_message($request)
   } else if (hasUserStartedValidation($from)) {
     if (isExitCourseInstruction($messageReceived)) {
       update_validation_status($from, 'not_started');
-      $dontHaveError = send_twilio_message($to, $from, '🌐 Gracias por hacernos llegar tu información, proto la validaremos. ¡Hasta pronto!', $client);
+      $dontHaveError = send_twilio_message($to, $from, get_message('gracias_validate.txt'), $client);
+      $dontHaveError = send_twilio_message($to, $from, get_message('menu.txt'), $client);
     } else {
       foreach ($from_admin as $admin) {
-        $dontHaveError = send_twilio_message($to, $admin, '*Quiero corroborar la veracidad de esta información:* (' . $ProfileName . ' - ' . $from . ') ' . $messageReceived, $client, $MediaUrl);
+        $dontHaveError = send_twilio_message($to, $admin, '‼ *Quiero corroborar la veracidad de esta información:* (' . $ProfileName . ' - ' . $from . ') ' . $messageReceived, $client, $MediaUrl);
       }
       if ($dontHaveError) {
-        $dontHaveError = send_twilio_message($to, $from, '📨 Su mensaje ha sido recibido por nuestros corresponsales. ¿Desea enviar otra información? Si desea volver al menu principal escriba *salir*', $client);
+        $dontHaveError = send_twilio_message($to, $from, get_message('recibido_validate.txt'), $client);
       }
     }
   } else if (hasUserStartedCourse($from)) {
     if (isExitCourseInstruction($messageReceived)) {
       logout_course($from);
-      $dontHaveError = send_twilio_message($to, $from, 'Usted ha salido del curso. ¡Hasta pronto!', $client);
+      $dontHaveError = send_twilio_message($to, $from, 'Usted ha salido del curso 📚. ¡Hasta pronto!', $client);
+      $dontHaveError = send_twilio_message($to, $from, get_message('menu.txt'), $client);
     } else {
       handle_test_course_progression($messageReceived, $from, $to, $client);
     }

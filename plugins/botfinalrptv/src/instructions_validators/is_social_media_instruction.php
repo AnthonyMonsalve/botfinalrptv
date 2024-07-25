@@ -6,7 +6,7 @@ function isSocialMediaInstruction($instruction)
 
   $SocialMediaInstruction =
     [
-      '4',
+      '5',
       'Reses Sociales',
       'Redes sociales',
       'RRSS',
