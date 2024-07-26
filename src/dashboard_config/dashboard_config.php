@@ -1,4 +1,5 @@
 <?php
+
 use Twilio\Rest\Client;
 
 // Asegúrate de que el código no se ejecute directamente
@@ -29,26 +30,28 @@ function datAv_config_page()
         return;
     }
 
-    // Guardar la configuración
-    if (isset($_POST['datAv_save_config'])) {
+    // Verificar el nonce
+    if (isset($_POST['datAv_save_config']) && check_admin_referer('datAv_nonce_action', 'datAv_nonce_name')) {
         update_option('datAv_twilio_sid', sanitize_text_field($_POST['datAv_twilio_sid']));
         update_option('datAv_twilio_token', sanitize_text_field($_POST['datAv_twilio_token']));
         update_option('datAv_twilio_phone', sanitize_text_field($_POST['datAv_twilio_phone']));
         update_option('datAv_twilio_admins', sanitize_text_field($_POST['datAv_twilio_admins']));
-        
+
         // Mostrar mensaje de éxito
-        echo '<div class="updated"><p>Configuraciones guardadas.</p></div>';
+        add_settings_error('datAv_messages', 'datAv_message', 'Configuraciones guardadas.', 'updated');
     }
 
-    // Obtener los valores guardados
+    settings_errors('datAv_messages');
+
     $twilio_sid = get_option('datAv_twilio_sid', '');
     $twilio_token = get_option('datAv_twilio_token', '');
     $twilio_phone = get_option('datAv_twilio_phone', '');
     $twilio_admins = get_option('datAv_twilio_admins', '');
-    ?>
+?>
     <div class="wrap">
         <h1>Configuración de DatAv</h1>
         <form method="post" action="">
+            <?php wp_nonce_field('datAv_nonce_action', 'datAv_nonce_name'); ?>
             <table class="form-table">
                 <tr valign="top">
                     <th scope="row">Twilio SID</th>
@@ -70,6 +73,7 @@ function datAv_config_page()
             <?php submit_button('Guardar Configuraciones', 'primary', 'datAv_save_config'); ?>
         </form>
     </div>
-    <?php
+<?php
 }
+
 ?>
