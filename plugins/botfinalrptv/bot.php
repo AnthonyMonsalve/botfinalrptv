@@ -102,7 +102,7 @@ function handle_twilio_message($request)
       $messageReceived = get_message('start_course.txt');
     } else if (isValidateInformationInstruction($messageReceived)) {
       update_validation_status($from, 'started');
-      $messageReceived = 'Puedes enviarme texto, imágenes, videos, documentos o notas de voz y lo guardaré en la base de datos para que nuestro equipo revise esa informacion y te contacte con la respuesta 👨🏻‍💻🔎👩🏽‍💻';
+      $messageReceived = get_message('start_validate_instruction.txt');;
     } else {
       $messageReceived = 'Hola, ' . $ProfileName . '. ¿En qué puedo ayudarte? Envia *"Republica"* para ver el menú principal.';
     }

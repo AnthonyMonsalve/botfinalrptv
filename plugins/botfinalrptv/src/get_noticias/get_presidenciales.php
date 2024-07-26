@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function obtener_notas_presidenciales()
 {
@@ -7,24 +7,25 @@ function obtener_notas_presidenciales()
     $args = array(
         'post_type' => 'post',
         'tag' => 'presidenciales-2024',
-        'posts_per_page' => 10 // Obtener todas las publicaciones
+        'posts_per_page' => 10 // Obtener 10 publicaciones
     );
 
     // Consulta de publicaciones
     $query = new WP_Query($args);
 
-    // Construir el string con el título y la URL de cada publicación
-    if ($query->have_posts()) {
-        while ($query->have_posts()) {
-            $query->the_post();
-            $titulo = get_the_title();
-            $url = get_permalink();
-            $notas_string .= "📰| $titulo\n $url\n\n";
-        }
-        wp_reset_postdata();
-    } else {
-        $notas_string = 'No se encontraron notas';
+    // Verificar si hay publicaciones
+    if (!$query->have_posts()) {
+        return "No se encontraron notas sobre las elecciones presidenciales.";
     }
+
+    // Construir el string con el título y la URL de cada publicación
+    while ($query->have_posts()) {
+        $query->the_post();
+        $titulo = esc_html(get_the_title());
+        $url = esc_url(get_permalink());
+        $notas_string .= "📰| $titulo\n $url\n\n";
+    }
+    wp_reset_postdata();
 
     return $notas_string;
 }
