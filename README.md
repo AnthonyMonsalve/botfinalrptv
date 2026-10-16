@@ -5,6 +5,15 @@ apagones por WhatsApp y el mapa público los muestra en tiempo real.
 
 Iniciativa de **La República TV** y la **Red de DDHH en Acción**.
 
+## Dónde está cada cosa
+
+| Documento | Para qué |
+|---|---|
+| **[CLAUDE.md](CLAUDE.md)** | Contexto para el agente de IA: por dónde empezar y las reglas que ya costaron caro |
+| **[docs/ARQUITECTURA.md](docs/ARQUITECTURA.md)** | Cómo está armado, qué depende de WordPress y cómo salir de él el día que convenga |
+| **[docs/NUEVO-SERVICIO.md](docs/NUEVO-SERVICIO.md)** | El plan para reportar internet, agua o gas además de la luz |
+| **[CHANGELOG.md](CHANGELOG.md)** | Qué se cambió, cuándo y por qué |
+
 ## Qué hay aquí
 
 Dos plugins de WordPress que viven en sitios distintos y se hablan por una API:
@@ -102,3 +111,30 @@ Hay dos formas de medir el tiempo sin luz y significan cosas distintas:
 El portal muestra la primera en los indicadores y el ranking, y usa la segunda
 solo como intensidad del mapa de calor. Al redactar informes, conviene decir
 cuál de las dos es cada número.
+
+## Cómo crece esto
+
+Hoy el bot reporta fallas eléctricas. El objetivo es que reporte también
+internet, agua o gas **sin duplicar el flujo**: el recorrido de la conversación
+—zona, dirección, cuándo empezó, foto, seguimiento— es el mismo para cualquier
+servicio público. Solo cambian los textos, las palabras que lo disparan y alguna
+pregunta propia.
+
+El plan está en [docs/NUEVO-SERVICIO.md](docs/NUEVO-SERVICIO.md): un motor
+genérico y un archivo de definición por servicio. **Todavía no está
+implementado**; el módulo actual asume "luz" en los nombres.
+
+Mientras tanto, la regla que mantiene esa puerta abierta:
+
+> Las funciones que **deciden** no leen la base de datos ni los ajustes: reciben
+> lo que necesitan y devuelven un resultado. Las que **hablan con el mundo**
+> (`$wpdb`, `get_option`, Twilio, REST) no deciden nada.
+
+Eso es también lo que permitiría, el día que convenga, servir la misma API desde
+otra tecnología sin tocar el portal: el contrato JSON es el límite entre los dos.
+
+## Al terminar un cambio
+
+1. Anótalo en [CHANGELOG.md](CHANGELOG.md), arriba del todo.
+2. Sube la versión con `.uild.ps1 <plugin> -Bump patch`.
+3. Sube el `.zip` de `dist/` desde **Plugins → Añadir → Subir plugin**.
