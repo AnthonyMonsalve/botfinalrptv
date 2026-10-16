@@ -1,0 +1,3 @@
+🏙️ ¿En qué *municipio* de {estado}?
+
+Responde con el número de la lista.

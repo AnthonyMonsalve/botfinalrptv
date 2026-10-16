@@ -5,14 +5,16 @@ function isValidateInformationInstruction($instruction)
     $instruction = strtolower($instruction);
 
     $interactiveCourseInstructions = [
-        '2',
+        '1',
         'validar informacion',
         'validar información',
         'validar information',
         'validar info',
         'denunciar',
         'denuncia',
-        'denunciar'
+        'denunciar',
+		'fact checking',
+        'enviar un reporte',
     ];
 
     if (in_array($instruction, $interactiveCourseInstructions)) {

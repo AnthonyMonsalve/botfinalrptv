@@ -1,0 +1,6 @@
+⚡ Ya tienes un reporte abierto en *{zona}*, sin servicio desde hace {duracion}.
+
+¿Ya volvió la luz?
+
+1. Sí, ya llegó
+2. No, sigue sin servicio

@@ -1,0 +1,5 @@
+⚡ *Reporte Eléctrico Nacional*
+
+Ayúdanos a monitorear las fallas del servicio eléctrico en todo el país. Te haré unas preguntas cortas para ubicar la falla.
+
+Envía *salir* en cualquier momento para volver al menú.

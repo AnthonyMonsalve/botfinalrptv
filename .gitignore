@@ -1,0 +1,39 @@
+# --- Material de despliegue -------------------------------------------------
+# Los .zip se generan con build.ps1 a partir del codigo: guardarlos aqui seria
+# versionar dos veces lo mismo y engordar el repositorio sin ganar nada.
+dist/
+*.zip
+
+# --- Dependencias -----------------------------------------------------------
+# El SDK de Twilio son 19 MB de codigo ajeno que composer.json ya describe.
+# OJO: el zip del bot SI lo incluye, porque el servidor no ejecuta composer.
+plugins/botfinalrptv/vendor/
+composer.phar
+node_modules/
+
+# --- Registros que escribe el bot en produccion -----------------------------
+# Los genera el propio plugin al funcionar. Si viajaran en el repositorio,
+# cada despliegue pisaria los del servidor con los de la maquina de turno.
+*_log.txt
+plugins/botfinalrptv/twilio.txt
+plugins/botfinalrptv/validate_info_log.txt
+plugins/botfinalrptv/presidenciales_noticias.txt
+
+# Red de seguridad: cualquier otro .txt dentro del bot es un registro que
+# escribe el plugin al funcionar, no codigo. Los mensajes son la excepcion.
+plugins/botfinalrptv/**/*.txt
+!plugins/botfinalrptv/src/messages/**/*.txt
+
+# --- Subidas de WordPress ---------------------------------------------------
+uploads/
+*.sql
+*.sql.gz
+
+# --- Sistema y editores -----------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*~

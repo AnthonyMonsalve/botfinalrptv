@@ -1,0 +1,3 @@
+🗺️ Puedes ver el *mapa nacional* con todos los reportes eléctricos en tiempo real aquí:
+
+{url}

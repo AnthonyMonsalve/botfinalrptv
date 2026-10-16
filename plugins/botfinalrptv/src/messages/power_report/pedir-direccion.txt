@@ -1,0 +1,5 @@
+✍️ Escribe tu *sector o dirección* para ubicar mejor la falla.
+
+Ejemplo: Av. 5 de Julio, sector Los Robles.
+
+Envía *0* si prefieres omitirlo.

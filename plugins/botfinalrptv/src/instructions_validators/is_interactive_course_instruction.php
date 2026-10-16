@@ -6,6 +6,7 @@ function isInteractiveCourseInstruction($instruction)
 
   $interactiveCourseInstructions = [
     '3',
+    'curso desinformacion',
     'empezar curso interactivo',
     'quiero empezar el curso interactivo',
     'iniciar curso interactivo',

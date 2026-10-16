@@ -1,0 +1,6 @@
+🔴 La falla continúa activa.
+
+📍 {zona}
+⏱️ Ya acumula {duracion} sin servicio.
+
+Seguiremos haciendo seguimiento y te volveremos a consultar más adelante.

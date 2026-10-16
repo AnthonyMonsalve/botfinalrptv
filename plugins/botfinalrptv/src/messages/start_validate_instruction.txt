@@ -1,3 +1,3 @@
 Puedes enviarme texto, imágenes, videos, documentos o notas de voz y lo guardaré en la base de datos para que nuestro equipo revise esa informacion y te contacte con la respuesta 👨🏻‍💻🔎👩🏽‍💻
 
-Si quieres volver al menú envía *Republica*
+Cuando termines, escribe *salir* o *República* para volver al menú.

@@ -1,0 +1,12 @@
+# Finales de linea en LF dentro del repositorio, pase lo que pase en la maquina
+# de quien edita. Sin esto, Windows los convierte a CRLF y cada commit llega
+# lleno de lineas "cambiadas" que en realidad no cambiaron.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ttf binary
+*.zip binary
+*.pdf binary

@@ -1,0 +1,3 @@
+✍️ Escríbeme el mensaje en texto, por favor.
+
+Si prefieres no dejarlo, envía *0*.

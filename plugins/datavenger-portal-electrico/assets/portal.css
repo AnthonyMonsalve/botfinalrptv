@@ -1,0 +1,756 @@
+/* Portal Reporte Eléctrico — centro de mando. Autónomo, no hereda estilos del tema. */
+
+:root {
+    --dvpe-accent: #2b7de9;
+    --dvpe-bg: #0f1522;
+    --dvpe-panel: #141d2f;
+    --dvpe-inset: #0f1522;
+    --dvpe-border: rgba(120, 150, 200, .14);
+    --dvpe-text: #e6edf7;
+    --dvpe-text-strong: #f2f6fc;
+    --dvpe-muted: #93a3bd;
+    --dvpe-soft: #b9c6da;
+    --dvpe-danger: #f0687f;
+    --dvpe-danger-soft: #f19aab;
+    --dvpe-ok: #4ade80;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--dvpe-bg);
+    color: var(--dvpe-text);
+    font-family: 'Instrument Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    /* Avisa al navegador de que el documento es oscuro: sin esto pinta en claro
+     * las barras de desplazamiento y los selectores de fecha del sistema. */
+    color-scheme: dark;
+}
+
+/* --- Barras de desplazamiento ------------------------------------------
+ *
+ * El portal es un documento propio, así que se estilan de forma global. Van
+ * finas y translúcidas para que no corten los paneles flotantes.
+ */
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(120, 150, 200, .32) transparent;
+}
+
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-corner { background: transparent; }
+
+::-webkit-scrollbar-thumb {
+    background: rgba(120, 150, 200, .3);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(140, 175, 230, .55); background-clip: padding-box; }
+::-webkit-scrollbar-thumb:active { background: var(--dvpe-accent); background-clip: padding-box; }
+
+a { color: #5ea3f2; }
+a:hover { color: #8cc0f7; }
+
+@keyframes dvpe-ring { 0% { transform: scale(.6); opacity: .8; } 100% { transform: scale(2.4); opacity: 0; } }
+@keyframes dvpe-tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes dvpe-blink { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+
+/* --- Estructura ------------------------------------------------------- */
+
+.dvpe-app { position: relative; min-height: 100dvh; }
+
+.dvpe-mapwrap { position: relative; height: 52dvh; z-index: 1; }
+.dvpe-map { position: absolute; inset: 0; }
+
+.dvpe-rail { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 12px; padding: 12px 12px 0; }
+.dvpe-rail--right { padding-bottom: 56px; }
+
+/* Desktop: mapa de fondo, paneles flotantes */
+@media (min-width: 980px) {
+    .dvpe-app { height: 100dvh; overflow: hidden; }
+    .dvpe-mapwrap { position: absolute; inset: 0 0 38px 0; height: auto; }
+    .dvpe-rail { position: absolute; top: 80px; bottom: 54px; padding: 0; z-index: 850; }
+    .dvpe-rail--left { left: 16px; width: 372px; }
+    .dvpe-rail--right { right: 16px; width: 312px; padding-bottom: 0; }
+    .dvpe-card--live { flex: 1; min-height: 260px; }
+    .dvpe-card--rank { max-height: 100%; }
+}
+
+/* --- Cabecera ---------------------------------------------------------- */
+
+.dvpe-header {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 12px 16px;
+    background: linear-gradient(180deg, rgba(11, 16, 26, .94), rgba(11, 16, 26, .6) 75%, transparent);
+    pointer-events: none;
+}
+.dvpe-header > * { pointer-events: auto; }
+
+.dvpe-header__brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.dvpe-header__mascot { width: 46px; height: 46px; flex: none; object-fit: contain; filter: drop-shadow(0 3px 8px rgba(0, 0, 0, .4)); }
+
+.dvpe-title { margin: 0; font-size: 18px; font-weight: 700; color: var(--dvpe-text-strong); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dvpe-subtitle { margin: 0; font-size: 12px; color: var(--dvpe-muted); }
+
+.dvpe-header__status { display: flex; align-items: center; gap: 12px; flex: none; }
+.dvpe-headlink {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--dvpe-panel);
+    border: 1px solid var(--dvpe-border);
+    color: var(--dvpe-text);
+    font-size: 12.5px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.dvpe-headlink:hover { color: var(--dvpe-text-strong); border-color: rgba(120, 150, 200, .34); }
+
+.dvpe-clock { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--dvpe-soft); font-variant-numeric: tabular-nums; }
+
+.dvpe-live { display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.dvpe-live__dot { width: 7px; height: 7px; border-radius: 50%; }
+.dvpe-live[data-state="ok"] { color: var(--dvpe-ok); background: rgba(74, 222, 128, .1); }
+.dvpe-live[data-state="ok"] .dvpe-live__dot { background: var(--dvpe-ok); animation: dvpe-blink 1.8s ease-in-out infinite; }
+.dvpe-live[data-state="loading"] { color: var(--dvpe-soft); background: rgba(147, 163, 189, .12); }
+.dvpe-live[data-state="loading"] .dvpe-live__dot { background: var(--dvpe-soft); }
+.dvpe-live[data-state="error"] { color: var(--dvpe-danger); background: rgba(232, 83, 107, .12); }
+.dvpe-live[data-state="error"] .dvpe-live__dot { background: var(--dvpe-danger); }
+
+/* --- CTA de WhatsApp ------------------------------------------------------ */
+
+.dvpe-cta {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    flex: none;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .18s ease;
+}
+.dvpe-cta:hover { transform: translateY(-3px); }
+
+.dvpe-cta__mascot {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+    flex: none;
+    margin-bottom: -4px;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .45));
+}
+.dvpe-cta__bubble {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 10px 14px;
+    box-shadow: 0 10px 30px rgba(5, 10, 20, .45);
+}
+.dvpe-cta__tail {
+    position: absolute;
+    left: -6px;
+    bottom: 12px;
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    transform: rotate(45deg);
+    border-radius: 2px;
+}
+.dvpe-cta__wa {
+    width: 34px;
+    height: 34px;
+    flex: none;
+    border-radius: 50%;
+    background: #25d366;
+    display: grid;
+    place-items: center;
+}
+.dvpe-cta__wa svg { width: 19px; height: 19px; fill: #fff; }
+.dvpe-cta__text strong { display: block; font-size: 13.5px; font-weight: 700; color: #17253c; line-height: 1.25; }
+.dvpe-cta__text span { display: block; font-size: 12px; color: #5b6b85; }
+
+/* --- Tarjetas ----------------------------------------------------------- */
+
+.dvpe-card {
+    background: var(--dvpe-panel);
+    border: 1px solid var(--dvpe-border);
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(5, 10, 20, .4);
+    padding: 12px;
+}
+.dvpe-card__title { margin: 0 0 6px; font-size: 14px; font-weight: 700; color: var(--dvpe-text-strong); }
+
+.dvpe-card--live { display: flex; flex-direction: column; overflow: hidden; padding-bottom: 6px; }
+.dvpe-card--rank { display: flex; flex-direction: column; overflow: hidden; }
+
+.dvpe-alert {
+    background: rgba(232, 83, 107, .1);
+    border: 1px solid rgba(232, 83, 107, .3);
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* --- Controles segmentados ---------------------------------------------- */
+
+.dvpe-seg { display: flex; gap: 6px; margin-bottom: 10px; background: var(--dvpe-inset); border-radius: 10px; padding: 4px; }
+.dvpe-seg__btn {
+    flex: 1;
+    padding: 7px 0;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--dvpe-muted);
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .15s ease;
+}
+.dvpe-seg__btn.is-active { background: var(--dvpe-accent); color: #fff; }
+
+/* --- Estadísticas -------------------------------------------------------- */
+
+.dvpe-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; transition: opacity .18s ease; }
+.dvpe-stats.is-fading { opacity: 0; }
+
+.dvpe-stat { background: var(--dvpe-inset); border-radius: 10px; padding: 9px 12px; position: relative; }
+.dvpe-stat__label { display: block; font-size: 11.5px; color: var(--dvpe-muted); }
+.dvpe-stat__value { font-size: 20px; line-height: 1.15; font-weight: 700; color: var(--dvpe-text-strong); font-variant-numeric: tabular-nums; }
+.dvpe-stat__value--small { font-size: 14.5px; line-height: 1.2; white-space: nowrap; }
+.dvpe-stat__hint { display: block; font-size: 11px; color: var(--dvpe-muted); margin-top: 1px; }
+
+.dvpe-stat--accent { background: rgba(232, 83, 107, .09); }
+.dvpe-stat--accent .dvpe-stat__label { color: var(--dvpe-danger-soft); font-weight: 600; }
+.dvpe-stat--accent .dvpe-stat__value { font-size: 24px; color: var(--dvpe-danger); }
+
+#dvpe-spark { position: absolute; right: 10px; bottom: 8px; width: 58px; height: 26px; }
+
+/* --- Lista de fallas ------------------------------------------------------ */
+
+.dvpe-list { list-style: none; margin: 0; padding: 0; overflow-y: auto; flex: 1; }
+.dvpe-list__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 6px;
+    border-bottom: 1px solid rgba(120, 150, 200, .09);
+    border-radius: 8px;
+    cursor: pointer;
+}
+.dvpe-list__item:hover, .dvpe-list__item:focus-visible { background: rgba(43, 125, 233, .08); outline: none; }
+.dvpe-list__zone { display: block; font-weight: 600; font-size: 13.5px; color: var(--dvpe-text); }
+.dvpe-list__addr { display: block; font-size: 12px; color: var(--dvpe-muted); }
+.dvpe-list__time { flex: none; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; color: var(--dvpe-danger); font-variant-numeric: tabular-nums; }
+
+.dvpe-empty { padding: 12px 4px; font-size: 13px; color: var(--dvpe-muted); }
+
+/* --- Ranking -------------------------------------------------------------- */
+
+.dvpe-rank { list-style: none; margin: 0; padding: 0; overflow-y: auto; transition: opacity .18s ease; }
+.dvpe-rank.is-fading { opacity: 0; }
+.dvpe-rank__item { padding: 9px 2px; border-bottom: 1px solid rgba(120, 150, 200, .09); }
+.dvpe-rank__row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.dvpe-rank__name { font-weight: 600; font-size: 13px; color: var(--dvpe-text); min-width: 0; overflow-wrap: anywhere; }
+.dvpe-rank__parent { display: block; font-weight: 400; font-size: 11.5px; color: var(--dvpe-muted); }
+.dvpe-rank__value { flex: none; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; font-weight: 600; color: var(--dvpe-soft); font-variant-numeric: tabular-nums; }
+.dvpe-rank__bar { display: block; height: 4px; border-radius: 2px; background: var(--dvpe-accent); opacity: .85; margin-top: 7px; transition: width .5s ease; }
+
+.dvpe-note { margin: 10px 0 0; font-size: 11px; line-height: 1.5; color: var(--dvpe-muted); }
+
+/* --- Leyenda del mapa ------------------------------------------------------ */
+
+.dvpe-legend {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    z-index: 800;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    background: var(--dvpe-panel);
+    border: 1px solid var(--dvpe-border);
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 12px;
+    color: var(--dvpe-muted);
+}
+.dvpe-legend > span { display: flex; align-items: center; gap: 7px; }
+.dvpe-legend__dot { width: 10px; height: 10px; border-radius: 50%; }
+.dvpe-legend__dot--gps { background: #e8536b; }
+.dvpe-legend__dot--approx { background: var(--dvpe-accent); }
+
+/* --- Marcadores ------------------------------------------------------------ */
+
+.dvpe-pin { position: relative; display: block; width: 14px; height: 14px; }
+.dvpe-pin i { position: absolute; inset: 2px; border-radius: 50%; border: 2px solid #fff; }
+.dvpe-pin b { position: absolute; inset: 0; border-radius: 50%; animation: dvpe-ring 2.4s ease-out infinite; }
+.dvpe-pin--gps i { background: #e8536b; }
+.dvpe-pin--gps b { background: rgba(232, 83, 107, .5); }
+.dvpe-pin--approx i { background: var(--dvpe-accent); }
+.dvpe-pin--approx b { background: rgba(43, 125, 233, .4); animation-duration: 3.4s; }
+
+.leaflet-container { background: var(--dvpe-bg); font-family: 'Instrument Sans', sans-serif; }
+.leaflet-tooltip { background: #fff; border: 0; color: #22304a; font-family: 'Instrument Sans', sans-serif; font-size: 12px; font-weight: 600; border-radius: 8px; box-shadow: 0 4px 14px rgba(10, 20, 40, .25); }
+.leaflet-tooltip-top:before { border-top-color: #fff; }
+.leaflet-control-zoom a { background: #fff; color: #22304a; border-color: rgba(30, 50, 80, .12); }
+.leaflet-control-attribution { background: rgba(15, 21, 34, .7); color: #64748f; }
+.leaflet-control-attribution a { color: #8296b3; }
+
+/* --- Ticker ------------------------------------------------------------------ */
+
+.dvpe-ticker {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    height: 38px;
+    z-index: 950;
+    display: flex;
+    align-items: stretch;
+    background: var(--dvpe-panel);
+    border-top: 1px solid var(--dvpe-border);
+    overflow: hidden;
+}
+@media (min-width: 980px) { .dvpe-ticker { position: absolute; } }
+
+.dvpe-ticker__label {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 14px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--dvpe-text-strong);
+    border-right: 1px solid var(--dvpe-border);
+    background: var(--dvpe-panel);
+    z-index: 2;
+}
+.dvpe-ticker__label img { width: 22px; height: 22px; object-fit: contain; }
+.dvpe-ticker__viewport { flex: 1; overflow: hidden; display: flex; align-items: center; }
+.dvpe-ticker__row { display: flex; gap: 42px; white-space: nowrap; padding-left: 42px; animation: dvpe-tick 40s linear infinite; }
+.dvpe-ticker__item { font-size: 12.5px; color: var(--dvpe-muted); }
+.dvpe-ticker__item time { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; }
+.dvpe-ticker__item strong { color: var(--dvpe-text); font-weight: 600; }
+.dvpe-ticker__item em { font-style: normal; color: var(--dvpe-danger); }
+
+/* --- Detalle ------------------------------------------------------------------ */
+
+.dvpe-detail {
+    position: fixed;
+    inset: 0;
+    background: rgba(6, 10, 18, .7);
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+.dvpe-detail__panel {
+    position: relative;
+    background: var(--dvpe-panel);
+    border: 1px solid rgba(120, 150, 200, .18);
+    border-radius: 16px;
+    padding: 24px;
+    max-width: 440px;
+    width: 100%;
+    max-height: 86dvh;
+    overflow-y: auto;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .55);
+}
+.dvpe-detail__close {
+    position: absolute;
+    top: 12px; right: 14px;
+    background: none;
+    border: 0;
+    font-size: 24px;
+    line-height: 1;
+    color: var(--dvpe-muted);
+    cursor: pointer;
+}
+.dvpe-detail__head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.dvpe-detail__head img { width: 44px; height: 44px; object-fit: contain; flex: none; }
+.dvpe-detail__kicker { display: block; font-size: 12px; font-weight: 600; color: var(--dvpe-danger-soft); }
+/* El color acompaña al estado: rojo en curso, verde cerrado, gris sin confirmar. */
+.dvpe-detail__kicker.is-restored { color: var(--dvpe-ok); }
+.dvpe-detail__kicker.is-undetermined { color: var(--dvpe-muted); }
+.dvpe-detail__panel h2 { margin: 2px 0 0; font-size: 19px; font-weight: 700; color: var(--dvpe-text-strong); }
+.dvpe-detail__panel dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; font-size: 13.5px; }
+.dvpe-detail__panel dt { color: var(--dvpe-muted); }
+.dvpe-detail__panel dd { margin: 0; color: var(--dvpe-text); font-weight: 600; }
+.dvpe-detail__photo { display: block; width: 100%; border-radius: 10px; margin-top: 14px; }
+
+/* --- Compartir un reporte ------------------------------------------------- */
+
+.dvpe-share {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--dvpe-border);
+}
+.dvpe-share .dvpe-btn { flex: 1 1 auto; min-width: 128px; }
+.dvpe-share__main { flex: 2 1 160px; }
+
+.dvpe-share__nets {
+    flex: 1 1 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+/* Botón circular por red. El icono hereda el color, así que basta con cambiar
+ * 'color' para teñirlo entero. */
+.dvpe-net {
+    width: 40px;
+    height: 40px;
+    flex: none;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--dvpe-border);
+    border-radius: 50%;
+    background: var(--dvpe-inset);
+    color: var(--dvpe-muted);
+    cursor: pointer;
+    text-decoration: none;
+    transition: color .15s ease, border-color .15s ease, background .15s ease, transform .15s ease;
+}
+.dvpe-net svg { width: 17px; height: 17px; fill: currentColor; display: block; }
+.dvpe-net:hover { transform: translateY(-2px); border-color: currentColor; }
+.dvpe-net:focus-visible { outline: 2px solid var(--dvpe-accent); outline-offset: 2px; }
+
+/* Cada una con su color de marca, solo al pasar por encima: en reposo la fila
+ * se mantiene sobria y no compite con los datos del reporte. */
+.dvpe-net--whatsapp:hover { color: #25d366; }
+.dvpe-net--x:hover { color: #f2f6fc; }
+.dvpe-net--facebook:hover { color: #1877f2; }
+.dvpe-net--telegram:hover { color: #27a7e7; }
+.dvpe-net--enlace:hover { color: var(--dvpe-accent); }
+.dvpe-net.is-done { color: var(--dvpe-ok); border-color: var(--dvpe-ok); }
+
+@media (hover: none) {
+    /* Sin cursor no hay hover: los colores se muestran siempre. */
+    .dvpe-net--whatsapp { color: #25d366; }
+    .dvpe-net--x { color: #f2f6fc; }
+    .dvpe-net--facebook { color: #1877f2; }
+    .dvpe-net--telegram { color: #27a7e7; }
+    .dvpe-net--enlace { color: var(--dvpe-accent); }
+    .dvpe-net { width: 44px; height: 44px; }
+}
+
+.dvpe-detail[hidden], .dvpe-ticker[hidden], #dvpe-spark[hidden] { display: none; }
+
+/* --- Barra de control ----------------------------------------------------------
+ *
+ * Los mandos que afectan a toda la vista (periodo, modo de mapa, descarga) viven
+ * aquí y no dentro de una tarjeta: así no compiten por el alto de los rieles,
+ * que es fijo, y no vuelven a empujar el contenido fuera de la pantalla.
+ */
+
+.dvpe-toolbar {
+    position: relative;
+    z-index: 880;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 12px;
+}
+.dvpe-toolbar__left,
+.dvpe-toolbar__right { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+
+.dvpe-toolbar .dvpe-seg {
+    margin: 0;
+    background: var(--dvpe-panel);
+    border: 1px solid var(--dvpe-border);
+    box-shadow: 0 6px 18px rgba(5, 10, 22, .28);
+}
+.dvpe-toolbar .dvpe-seg__btn { flex: none; padding: 7px 13px; white-space: nowrap; }
+.dvpe-toolbar .dvpe-seg[hidden] { display: none; }
+
+@media (min-width: 980px) {
+    .dvpe-toolbar {
+        position: absolute;
+        top: 74px; left: 16px; right: 16px;
+        padding: 0;
+        pointer-events: none;
+    }
+    .dvpe-toolbar > * { pointer-events: auto; }
+    /* El riel izquierdo empieza bajo la barra, no bajo la cabecera. */
+    .dvpe-rail { top: 128px; }
+}
+
+/* Selector de periodo: nativo en móvil, botones en escritorio. Están los dos en
+ * el marcado y manda la anchura, no el JavaScript. */
+.dvpe-rangepick {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 10px 4px 12px;
+    background: var(--dvpe-panel);
+    border: 1px solid var(--dvpe-border);
+    border-radius: 10px;
+}
+.dvpe-rangepick__label { font-size: 12px; font-weight: 600; color: var(--dvpe-muted); }
+.dvpe-rangepick select {
+    border: 0;
+    background: transparent;
+    color: var(--dvpe-text-strong);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 2px;
+    cursor: pointer;
+    color-scheme: dark;
+}
+.dvpe-seg--range { display: none; }
+
+@media (min-width: 980px) {
+    .dvpe-rangepick { display: none; }
+    .dvpe-seg--range { display: flex; }
+}
+
+/* --- Periodo a medida --------------------------------------------------------- */
+
+.dvpe-picker { position: relative; }
+
+.dvpe-custom {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 8px;
+    width: 300px;
+    padding: 12px;
+    background: var(--dvpe-panel);
+    border: 1px solid var(--dvpe-border);
+    border-radius: 12px;
+    box-shadow: 0 14px 34px rgba(5, 10, 22, .5);
+}
+.dvpe-custom[hidden] { display: none; }
+
+/* En móvil no hay botón "Personalizado" (lo cubre el selector), así que el
+ * desplegable se ancla a la barra y ocupa todo el ancho. */
+@media (max-width: 979px) {
+    #dvpe-custom-btn { display: none; }
+    .dvpe-picker { position: static; }
+    .dvpe-custom { left: 12px; right: 12px; top: calc(100% - 4px); width: auto; }
+}
+.dvpe-custom__field { flex: 1 1 140px; display: flex; flex-direction: column; gap: 4px; }
+.dvpe-custom__field span { font-size: 11.5px; color: var(--dvpe-muted); }
+.dvpe-custom__field input {
+    width: 100%;
+    padding: 7px 9px;
+    border: 1px solid var(--dvpe-border);
+    border-radius: 8px;
+    background: var(--dvpe-panel);
+    color: var(--dvpe-text);
+    font-family: inherit;
+    font-size: 12.5px;
+    color-scheme: dark;
+}
+
+.dvpe-btn {
+    padding: 8px 14px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--dvpe-accent);
+    color: #fff;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: filter .15s ease;
+}
+.dvpe-btn:hover { filter: brightness(1.12); }
+.dvpe-btn[disabled] { opacity: .6; cursor: progress; }
+.dvpe-btn--ghost {
+    background: var(--dvpe-panel);
+    border: 1px solid var(--dvpe-border);
+    color: var(--dvpe-text);
+    box-shadow: 0 6px 18px rgba(5, 10, 22, .28);
+}
+.dvpe-btn--ghost.is-active { background: var(--dvpe-accent); border-color: transparent; color: #fff; }
+
+.dvpe-rangelabel {
+    margin: 0;
+    padding: 0 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--dvpe-soft);
+    white-space: nowrap;
+}
+
+/* --- Histograma ---------------------------------------------------------------- */
+
+.dvpe-chart {
+    display: flex;
+    align-items: stretch;
+    gap: 2px;
+    height: 74px;
+    padding: 4px 2px 0;
+    background: var(--dvpe-inset);
+    border-radius: 10px;
+}
+
+/*
+ * Cada barra es un botón que ocupa todo el alto del gráfico, aunque su parte
+ * pintada sea pequeña: en el móvil no hay hover, y una barra de dos píxeles
+ * sería imposible de acertar con el dedo. Se toca la columna entera.
+ */
+.dvpe-chart__bar {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.dvpe-chart__bar::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: var(--h, 2px);
+    border-radius: 2px 2px 0 0;
+    background: var(--dvpe-accent);
+    opacity: .55;
+    transition: height .4s ease, opacity .15s ease, background .15s ease;
+}
+.dvpe-chart__bar.is-peak::after { background: var(--dvpe-danger); opacity: 1; }
+.dvpe-chart__bar:hover::after { opacity: 1; }
+
+/* La barra elegida se ve a distancia: llena la columna y cambia de color. */
+.dvpe-chart__bar.is-selected { background: rgba(43, 125, 233, .14); border-radius: 4px; }
+.dvpe-chart__bar.is-selected::after { opacity: 1; background: var(--dvpe-text-strong); }
+.dvpe-chart__bar:focus-visible { outline: 2px solid var(--dvpe-accent); outline-offset: 1px; border-radius: 4px; }
+
+.dvpe-chart__axis {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+    padding: 0 2px;
+    font-size: 10.5px;
+    color: var(--dvpe-muted);
+    font-variant-numeric: tabular-nums;
+}
+.dvpe-chart__foot { margin: 6px 0 0; font-size: 11.5px; color: var(--dvpe-muted); min-height: 15px; }
+
+/* En pantallas táctiles las columnas se separan un poco más: más sitio al dedo. */
+@media (hover: none) {
+    .dvpe-chart { gap: 3px; height: 86px; }
+}
+
+/* --- Capa de calor y descarga ----------------------------------------------------- */
+
+/* La capa de calor va sobre las teselas pero por debajo de los controles. */
+.dvpe-heat { position: absolute; inset: 0; z-index: 450; pointer-events: none; }
+
+.dvpe-export { position: relative; }
+/* [hidden] necesita ganar a los display de arriba cuando la API no trae periodo. */
+.dvpe-export[hidden], .dvpe-card--chart[hidden], .dvpe-seg--map[hidden] { display: none; }
+.dvpe-export__menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    width: 232px;
+    background: var(--dvpe-panel);
+    border: 1px solid var(--dvpe-border);
+    border-radius: 10px;
+    padding: 6px;
+    box-shadow: 0 12px 30px rgba(5, 10, 22, .5);
+}
+.dvpe-export__menu[hidden] { display: none; }
+
+/* En móvil el botón queda pegado al borde izquierdo, así que anclarlo por la
+ * derecha sacaba el menú fuera de la pantalla: pasa a ocupar el ancho de la
+ * barra, igual que el desplegable de fechas. */
+@media (max-width: 979px) {
+    .dvpe-export { position: static; }
+    .dvpe-export__menu { left: 12px; right: 12px; width: auto; top: calc(100% - 4px); }
+}
+.dvpe-export__menu button {
+    display: block;
+    width: 100%;
+    padding: 8px 10px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--dvpe-text);
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+.dvpe-export__menu button:hover { background: var(--dvpe-inset); }
+.dvpe-export__menu strong { display: block; font-size: 13px; font-weight: 600; }
+.dvpe-export__menu span { display: block; font-size: 11.5px; color: var(--dvpe-muted); }
+
+.dvpe-legend--heat { gap: 8px; }
+.dvpe-legend[hidden] { display: none; }
+.dvpe-legend__sep { color: var(--dvpe-border); }
+.dvpe-legend__scale {
+    width: 96px;
+    height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #2b7de9, #2ec4b6, #f5cd3c, #e23028);
+}
+
+/* La esquina de abajo a la izquierda es del riel; la leyenda se va a la derecha,
+ * que en escritorio es la única franja de mapa que queda libre. */
+@media (min-width: 980px) {
+    .dvpe-legend { left: auto; right: 344px; bottom: 46px; }
+}
+
+@media (max-width: 979px) {
+    .dvpe-legend { max-width: 60%; flex-wrap: wrap; gap: 8px; }
+}
+
+/* --- Alturas del riel izquierdo -------------------------------------------------
+ *
+ * Solo la lista de fallas crece. Los KPIs y el histograma tienen alto propio, de
+ * modo que al añadir contenido nuevo nunca vuelva a empujarse nada fuera.
+ */
+@media (min-width: 980px) {
+    .dvpe-card--stats, .dvpe-card--chart { flex: none; }
+    .dvpe-card--live { flex: 1 1 auto; min-height: 150px; }
+
+    /* min-height:0 es lo que permite que la lista se encoja dentro del flex y
+     * saque su propia barra; sin eso empujaría la tarjeta hacia abajo. */
+    .dvpe-card--live .dvpe-list { overflow-y: auto; min-height: 0; }
+
+    /* Último recurso para ventanas muy bajas: antes recortar con scroll que
+     * dejar contenido fuera de la pantalla sin manera de llegar a él. */
+    .dvpe-rail--left { overflow-y: auto; scrollbar-width: thin; }
+}
+
+/* --- Movimiento reducido -------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .dvpe-pin b, .dvpe-ticker__row, .dvpe-live__dot { animation: none !important; }
+}

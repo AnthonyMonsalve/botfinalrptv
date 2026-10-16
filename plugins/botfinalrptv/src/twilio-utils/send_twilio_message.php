@@ -26,3 +26,29 @@ function send_twilio_message($from, $to, $body, $client, $MediaUrl0 = null)
     return new WP_REST_Response('Error sending message', 500);
   }
 }
+
+function send_twilio_menu_message($from, $to, $client)
+{
+  $log_file = plugin_dir_path(__FILE__) . 'twilio_message_log.txt';
+  $contentSid = get_option('datAv_twilio_menu_content_sid', 'HXd1a0e857bf51cb77cb4829036264ad58');
+
+  if (empty($contentSid)) {
+    file_put_contents($log_file, "Menu fallback: no contentSid, using menu.txt\n", FILE_APPEND);
+    return send_twilio_message($from, $to, get_message('menu.txt'), $client);
+  }
+
+  try {
+    $messageData = [
+      'from' => $from,
+      'contentSid' => $contentSid,
+    ];
+
+    $message = $client->messages->create($to, $messageData);
+
+    file_put_contents($log_file, 'Menu message sent: ' . $message->sid . "\n", FILE_APPEND);
+    return true;
+  } catch (Exception $e) {
+    file_put_contents($log_file, 'Error sending menu message: ' . $e->getMessage() . "\n", FILE_APPEND);
+    return send_twilio_message($from, $to, get_message('menu.txt'), $client);
+  }
+}

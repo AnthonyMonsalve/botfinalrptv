@@ -1,0 +1,3 @@
+🏘️ ¿En qué *parroquia* de {municipio}?
+
+Responde con el número de la lista.

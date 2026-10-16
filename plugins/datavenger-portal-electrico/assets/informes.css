@@ -1,0 +1,213 @@
+/*
+ * Informes: listado público y los dos avisos (el que sube desde abajo en el
+ * portal y el horizontal del shortcode).
+ *
+ * Hereda las variables de portal.css, que se carga antes, para que la sección
+ * se vea de la misma familia que el mapa. El shortcode, en cambio, se incrusta
+ * en páginas del tema y lleva sus propios valores por si allí no existen.
+ */
+
+/* --- Listado --------------------------------------------------------------- */
+
+.dvpe-informes-page { overflow-y: auto; }
+
+.dvpe-docwrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 28px 16px 64px;
+}
+
+.dvpe-dochead { margin-bottom: 28px; }
+
+.dvpe-dochead__back {
+    display: inline-block;
+    margin-bottom: 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dvpe-muted);
+    text-decoration: none;
+}
+.dvpe-dochead__back:hover { color: var(--dvpe-text-strong); }
+
+.dvpe-dochead__brand { display: flex; align-items: flex-start; gap: 16px; }
+.dvpe-dochead__brand img { width: 68px; height: 68px; flex: none; object-fit: contain; }
+.dvpe-dochead__kicker { display: block; font-size: 12.5px; font-weight: 700; color: var(--dvpe-accent); letter-spacing: .04em; text-transform: uppercase; }
+.dvpe-dochead h1 { margin: 4px 0 6px; font-size: 30px; line-height: 1.15; font-weight: 700; color: var(--dvpe-text-strong); }
+.dvpe-dochead p { margin: 0; max-width: 62ch; font-size: 14.5px; line-height: 1.55; color: var(--dvpe-muted); }
+
+.dvpe-docs { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; }
+
+.dvpe-doc {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--dvpe-panel);
+    border: 1px solid var(--dvpe-border);
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(5, 10, 20, .4);
+    transition: transform .18s ease, border-color .18s ease;
+}
+.dvpe-doc:hover { transform: translateY(-3px); border-color: rgba(120, 150, 200, .3); }
+
+/* El más reciente ocupa dos columnas y manda en la página. */
+@media (min-width: 760px) {
+    .dvpe-doc--destacado { grid-column: span 2; flex-direction: row; }
+    .dvpe-doc--destacado .dvpe-doc__media { width: 46%; aspect-ratio: auto; }
+    .dvpe-doc--destacado .dvpe-doc__body { flex: 1; }
+    .dvpe-doc--destacado h2 { font-size: 23px; }
+}
+
+.dvpe-doc__media {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 10;
+    background: var(--dvpe-inset);
+    overflow: hidden;
+}
+.dvpe-doc__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.dvpe-doc__sinimagen { position: absolute; inset: 0; display: grid; place-items: center; font-size: 42px; opacity: .35; }
+
+.dvpe-doc__badge {
+    position: absolute;
+    top: 10px; left: 10px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--dvpe-accent);
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 700;
+}
+
+.dvpe-doc__body { display: flex; flex-direction: column; gap: 8px; padding: 16px; }
+.dvpe-doc__body time { font-size: 11.5px; font-weight: 600; color: var(--dvpe-muted); text-transform: capitalize; }
+.dvpe-doc__body h2 { margin: 0; font-size: 17.5px; line-height: 1.25; font-weight: 700; color: var(--dvpe-text-strong); }
+.dvpe-doc__body p { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--dvpe-soft); }
+.dvpe-doc__cta { margin-top: auto; align-self: flex-start; text-decoration: none; display: inline-block; }
+
+.dvpe-doc-empty { text-align: center; padding: 42px 20px; }
+.dvpe-doc-empty p { margin: 0 0 16px; color: var(--dvpe-muted); }
+
+.dvpe-docfoot {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 34px;
+    padding-top: 20px;
+    border-top: 1px solid var(--dvpe-border);
+}
+.dvpe-docfoot img { width: 42px; height: 42px; object-fit: contain; flex: none; }
+.dvpe-docfoot p { flex: 1; min-width: 240px; margin: 0; font-size: 12px; line-height: 1.5; color: var(--dvpe-muted); }
+.dvpe-docfoot .dvpe-btn { text-decoration: none; }
+
+/* --- Aviso que sube desde abajo (en el portal) ------------------------------ */
+
+.dvpe-nudge {
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    z-index: 960;
+    width: min(620px, calc(100vw - 24px));
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--dvpe-panel);
+    border: 1px solid var(--dvpe-border);
+    border-bottom: 0;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -12px 40px rgba(3, 7, 16, .6);
+    /* Parte fuera de la pantalla y sube al aparecer. */
+    transform: translate(-50%, 110%);
+    transition: transform .45s cubic-bezier(.2, .8, .25, 1);
+}
+.dvpe-nudge.is-visible { transform: translate(-50%, 0); }
+.dvpe-nudge[hidden] { display: none; }
+
+.dvpe-nudge__mascot { width: 54px; height: 54px; flex: none; object-fit: contain; }
+.dvpe-nudge__body { flex: 1; min-width: 0; }
+.dvpe-nudge__kicker { display: block; font-size: 11.5px; font-weight: 700; color: var(--dvpe-accent); text-transform: uppercase; letter-spacing: .04em; }
+.dvpe-nudge__title {
+    display: block;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--dvpe-text-strong);
+    line-height: 1.3;
+    /* Dos líneas como mucho: es un aviso, no el informe. */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.dvpe-nudge .dvpe-btn { flex: none; text-decoration: none; white-space: nowrap; }
+
+.dvpe-nudge__close {
+    position: absolute;
+    top: 6px; right: 8px;
+    width: 26px; height: 26px;
+    border: 0;
+    background: transparent;
+    color: var(--dvpe-muted);
+    font-size: 19px;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.dvpe-nudge__close:hover { color: var(--dvpe-text-strong); background: var(--dvpe-inset); }
+
+@media (max-width: 640px) {
+    .dvpe-nudge { gap: 10px; padding: 12px 12px 14px; }
+    .dvpe-nudge__mascot { width: 44px; height: 44px; }
+    .dvpe-nudge__title { font-size: 13.5px; }
+    /* En el móvil el botón baja a su propia línea para no estrujar el título. */
+    .dvpe-nudge { flex-wrap: wrap; }
+    .dvpe-nudge .dvpe-btn { width: 100%; text-align: center; }
+}
+
+/* --- Banda horizontal del shortcode ---------------------------------------- */
+
+.dvpe-strip {
+    --dvpe-strip-accent: #2b7de9;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin: 24px 0;
+    padding: 18px 22px;
+    background: linear-gradient(135deg, #111a2d 0%, #16233c 100%);
+    border: 1px solid rgba(120, 150, 200, .18);
+    border-radius: 16px;
+    color: #e6edf7;
+    font-family: 'Instrument Sans', system-ui, sans-serif;
+    text-decoration: none;
+}
+.dvpe-strip:hover { border-color: rgba(120, 150, 200, .36); }
+
+.dvpe-strip__mascot { width: 62px; height: 62px; flex: none; object-fit: contain; }
+.dvpe-strip__body { flex: 1; min-width: 220px; }
+.dvpe-strip__kicker { display: block; font-size: 11.5px; font-weight: 700; color: var(--dvpe-strip-accent); text-transform: uppercase; letter-spacing: .05em; }
+.dvpe-strip__title { display: block; margin: 3px 0 2px; font-size: 18px; font-weight: 700; color: #f2f6fc; line-height: 1.25; }
+.dvpe-strip__text { display: block; font-size: 13.5px; line-height: 1.5; color: #b9c6da; }
+
+.dvpe-strip__cta {
+    flex: none;
+    padding: 11px 20px;
+    border-radius: 10px;
+    background: var(--dvpe-strip-accent);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.dvpe-strip__cta:hover { filter: brightness(1.12); color: #fff; }
+
+@media (max-width: 600px) {
+    .dvpe-strip { padding: 16px; gap: 12px; }
+    .dvpe-strip__cta { width: 100%; text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dvpe-nudge { transition: none; }
+    .dvpe-doc:hover { transform: none; }
+}

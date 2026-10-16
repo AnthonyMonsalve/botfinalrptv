@@ -1,0 +1,3 @@
+⚠️ Esa hora es anterior al inicio de la falla ({inicio}), así que no puede ser.
+
+¿A qué hora volvió la luz?

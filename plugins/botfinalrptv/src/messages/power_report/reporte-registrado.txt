@@ -1,0 +1,9 @@
+✅ *Reporte registrado.* Gracias por sumarte.
+
+📍 {zona}
+⚡ Falla iniciada: {inicio}
+⌛ Tiempo transcurrido: {transcurrido}
+
+🔴 La falla sigue activa. Te escribiremos para comprobar si regresó el servicio, cada vez con más espacio entre mensajes.
+
+Tu reporte ya aparece en el mapa nacional.

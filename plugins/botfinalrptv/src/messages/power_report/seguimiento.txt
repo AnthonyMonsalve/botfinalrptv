@@ -1,0 +1,6 @@
+⚡ Seguimos monitoreando tu reporte en *{zona}* ({duracion} sin servicio).
+
+¿Ya volvió la luz?
+
+1. Sí, ya llegó
+2. No, sigue sin servicio

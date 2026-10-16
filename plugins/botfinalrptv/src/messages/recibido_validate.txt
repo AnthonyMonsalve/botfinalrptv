@@ -1,2 +1,5 @@
-📨 Su mensaje ha sido recibido por nuestros corresponsales. ¿Desea enviar otra información? 
-Si ya culminaste tu solicitud, escribe 👉🏽 *salir*.
+📨 Su mensaje ha sido recibido por nuestros corresponsales.
+
+¿Desea enviar otra información? Envíela y también se la haremos llegar al equipo.
+
+Cuando termines, escribe *salir* o *República* para volver al menú 👉🏽 y si no escribes nada, cerramos la solicitud en {minutos} minutos.

@@ -1,0 +1,5 @@
+🤔 No entendí esa hora. ¿A qué hora volvió la luz?
+
+Ejemplos: *3pm*, *15:30*, *hace 20 minutos*.
+
+Si acaba de llegar, envía *0*.

@@ -1,8 +1,12 @@
-Marca el *número* correspondiente a las siguientes *[opciones]* 👇🏻:
+﻿Marca el *número* correspondiente a las siguientes *[opciones]* 👇🏻:
 
-👉🏽 *[1]* - 🇻🇪 #VzlaTieneVoz | Últimas noticias sobre Elecciones presidenciales
+👉🏽 *[8]* - ⚡ Reporte Eléctrico | Reporta una falla del servicio eléctrico en tu zona
 
-👉🏽 *[2]* - 🤨 Comprobar una información o enviar un reporte 🎥📽📝
+👉🏽 *[7]* - 🇻🇪 Quiero Elegir | Exige las condiciones para volver a elegir
+
+👉🏽 *[1]* - 🎤🎥 ENVIAR UN REPORTE (Texto, audio, video) o consultar si una información es verídica 
+
+👉🏽 *[2]* - 🇻🇪 #VzlaTieneVoz | Recibe las noticias más destacadas del acontecer nacional
 
 👉🏽 *[3]* - 🤓 Curso interactivo sobre desinformación
 
@@ -10,5 +14,7 @@ Marca el *número* correspondiente a las siguientes *[opciones]* 👇🏻:
 
 👉🏽 *[5]* - 🤳 Quiero seguirlos en sus redes sociales.
 
- 
-Recuerda que puedes escribir la palabra 👉🏽 *“Republica”* 👈🏽 en cualquier momento, para *volver a este Menú*
+👉🏽 *[6]* - 🎨 Memegenerator
+¡Crea tu propio meme con nosotros!
+
+Recuerda que puedes escribir la palabra 👉🏽 *"República"* 👈🏽 en cualquier momento, para *volver a este Menú*

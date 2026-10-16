@@ -1,0 +1,9 @@
+⏱️ ¿Cuándo se fue la luz?
+
+Si fue hoy, escribe la hora.
+Ejemplo: 8 de la mañana.
+
+Si fue ayer, escribe "ayer" y la hora.
+Ejemplo: ayer a las 9 de la noche.
+
+¿No recuerdas la hora? Escribe *0* para ver opciones.

@@ -1,0 +1,3 @@
+⚠️ No pudimos confirmar si el servicio volvió, así que cerramos tu reporte de *{zona}*.
+
+Si sigues sin luz, envía *luz* para abrir uno nuevo.

@@ -1,0 +1,8 @@
+✅ *Servicio restablecido.* Cerramos tu reporte.
+
+📍 {zona}
+⚡ Inicio: {inicio}
+💡 Restablecimiento: {hora}
+⏱️ Duración total: *{duracion}*
+
+Gracias por ayudarnos a documentar el servicio eléctrico.

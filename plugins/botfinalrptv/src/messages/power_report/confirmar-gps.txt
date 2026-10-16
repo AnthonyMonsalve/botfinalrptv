@@ -1,0 +1,6 @@
+📍 Según tu ubicación estás cerca de *{municipio}, {estado}*.
+
+¿Es correcto?
+
+1. Sí, es correcto
+2. No, quiero elegirlo yo
